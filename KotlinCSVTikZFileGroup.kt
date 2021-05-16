@@ -46,14 +46,14 @@ public class KotlinCSVTikZFileGroup(
 
     init {
         if(FileNamePrefix.isEmpty()) {
-           println("Sorry for empty FileNamePrefix: "+FileNamePrefix+" \n");
-           println("stopped, when creating a KotlinCSVTikZFileGroup object.\n");
+           println("Sorry for empty FileNamePrefix: "+FileNamePrefix);
+           println("stopped, when creating a KotlinCSVTikZFileGroup object.");
            exitProcess(4);
         }
 
         if(RowsInEachFile < 1) {
-           println("Sorry for empty FileNamePrefix: "+FileNamePrefix+" \n");
-           println("stopped, when creating a KotlinCSVTikZFileGroup object.\n");
+           println("Sorry for empty FileNamePrefix: "+FileNamePrefix);
+           println("stopped, when creating a KotlinCSVTikZFileGroup object.");
            exitProcess(4);
         }
 
@@ -67,18 +67,16 @@ public class KotlinCSVTikZFileGroup(
         TotalFiles = Math.abs(StartingRow - EndingRow) / RowsInEachFile + 1;
 
         for (i in 1..(TotalFiles)) {
-               TheFilesOpened.add(File(FileNamePrefix+i.toString()+KotlinCSVTikZFileExtension));
-/*            var filename = FileNamePrefix+i.toString()+KotlinCSVTikZFileExtension;
-            var anewfile = File(filename)
-            var fileExists = anewfile.exists()
-            if(fileExists){
-               TheFilesOpened.add(File(FileNamePrefix+i.toString()+KotlinCSVTikZFileExtension));
-               println("The file "+filename+" is opened as No. "+i.toString()+" \n");
-            } else {
-               println("The file "+filename+" open is failed, \n");
-               println("stopped, when creating a KotlinCSVTikZFileGroup object.\n");
-              // exitProcess(4);
-            } */
+            var filename = FileNamePrefix+i.toString()+KotlinCSVTikZFileExtension;
+            try{
+                TheFilesOpened.add(File(filename));
+                println("The file "+filename+" is opened as No. "+i.toString());
+            } catch(e: Exception) {
+                println("The file "+filename+" open is failed, ");
+                println("stopped, when creating a KotlinCSVTikZFileGroup object.");
+		        e.printStackTrace()
+                exitProcess(4);
+            }
         }
 
         FileNamePrefixes.add(FileNamePrefix);
@@ -103,13 +101,13 @@ public class KotlinCSVTikZFileGroup(
     fun GetFileForRow(RowNumber: Int): File{
         k = RowNumber-StartingRowNumber;
         if ((k*RowNumberDirection) < 0) {
-            println("The RowNumber should be from "+StartingRowNumber+" to "+EndingRowNumber+" \n");
-            println("Stopped for bad RowNumber "+RowNumber+" in GetFileForRow() of class KotlinCSVTikZFileGroup.\n");
+            println("The RowNumber should be from "+StartingRowNumber+" to "+EndingRowNumber);
+            println("Stopped for bad RowNumber "+RowNumber+" in GetFileForRow() of class KotlinCSVTikZFileGroup.");
             exitProcess(4);
         }
         if (Math.abs(k) > AbsoluteRowRange){
-            println("The RowNumber should be from "+StartingRowNumber+" to "+EndingRowNumber+" \n");
-            println("Stopped for bad RowNumber "+RowNumber+" in GetFileForRow() of class KotlinCSVTikZFileGroup.\n");
+            println("The RowNumber should be from "+StartingRowNumber+" to "+EndingRowNumber);
+            println("Stopped for bad RowNumber "+RowNumber+" in GetFileForRow() of class KotlinCSVTikZFileGroup.");
             exitProcess(4);
        }
         j = Math.abs(StartingRowNumber - RowNumber) / TotalRowsInEachFile;
