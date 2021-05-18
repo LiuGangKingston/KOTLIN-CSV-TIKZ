@@ -59,6 +59,16 @@ In the source file KotlinCSVTikZ.kt, the class can make it easy to split a large
         ...
 
         // The next statement will output data of variables into the specific file based on "i" value. 
+        (bigfiles.GetFileForRow(i)).appendText(" ${onevariable}, ${anothervariable}, ${anothervariable}, " 
+                      + "${anothervariable}, ${anothervariable}, ${anothervariable}, ${anothervariable}, " 
+                      + "${anothervariable}, ${anothervariable}, ${anothervariable}, ${anothervariable}, " 
+                      + "${anothervariable}, ${anothervariable}, ${anothervariable}, ${anothervariable}, " 
+                      + "${anothervariable}, ${anothervariable}, ${anothervariable}, ${anothervariable}, " 
+                      + "${anothervariable}, ${anothervariable}, ${anothervariable}, ${anothervariable}, " 
+                      + "${anothervariable}, ${anothervariable}, ${anothervariable}, ${anothervariable}, " 
+                      + "${anothervariable}, ${anothervariable}, " + bigfile.PickTikZColor(i) + "\n");
+
+        // Or use the following form:
         (bigfiles.GetFileForRow(i)).appendText(    onevariable.toString() + "," + anothervariable.toString() + ","  
           + anothervariable.toString() + "," + anothervariable.toString() + "," + anothervariable.toString() + "," 
           + anothervariable.toString() + "," + anothervariable.toString() + "," + anothervariable.toString() + "," 
