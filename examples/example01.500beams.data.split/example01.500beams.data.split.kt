@@ -47,10 +47,8 @@ fun main() {
     try {
          val afile = File("setup.scalars.csv");
          afile.writeText("totallines,refractiveindex,bigradius,a,b,z,anglez,c,anglea\n");
-         afile.appendText(totallines.toString() + "," + refractiveindex.toString() + ","
-               + bigradius.toString() + "," + a.toString() + "," + b.toString() + ","
-               + z.toString() + "," + anglez.toString() + "," + c.toString() + ","
-               + anglea.toString() + "\n");
+         afile.appendText("${totallines},${refractiveindex},${bigradius},${a},${b},${z},"+
+                          "${anglez},${c},${anglea}\n");
     } catch(e: Exception) {
          println("An error occurred when working on the file setup.scalars.csv, then stopped.");
          e.printStackTrace()
@@ -100,6 +98,8 @@ fun main() {
 
 
 }
+
+
 
 
 
