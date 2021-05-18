@@ -46,9 +46,8 @@ fun main() {
     try {
          val afile = File("setup.scalars.csv");
          afile.writeText("a,b,c,startingangleofsoidal,endinggangleofsoidal,startinxofsoidal,startinyofsoidal\n");
-         afile.appendText(a.toString() + "," + b.toString() + "," + c.toString() + ","
-                      + startingangleofsoidal.toString() + "," + endinggangleofsoidal.toString()
-                      + "," + startinxofsoidal.toString() + "," + startinyofsoidal.toString() +"\n");
+         afile.appendText("${a},${b},${c},${startingangleofsoidal},${endinggangleofsoidal}," +
+                          "${startinxofsoidal},${startinyofsoidal}\n");
     } catch(e: Exception) {
          println("An error occurred when working on the file setup.scalars.csv, then stopped.");
          e.printStackTrace()
@@ -88,12 +87,10 @@ fun main() {
        var reflectangle = tangentangle + 90.0e0 + incidentangle;
 
        try {
-            (bigfile.GetFileForRow(i)).appendText(c.toString() + "," + d.toString() + ","
-                     + startingangle.toString() + "," + dk.toString() + "," + bigf.toString() + ","
-                     + t.toString() + "," + x.toString() + "," + y.toString() + ","
-                     + yprime.toString() + "," + tangentangle.toString() + "," + normalangle.toString()
-                     + "," + incidentangle.toString() + "," + reflectangle.toString() + ","
-                     + csts.PickTypicalColor(i) + "\n");
+            (bigfile.GetFileForRow(i)).appendText("${c}, ${d}, ${startingangle}, ${dk}, ${bigf}, " +
+                                                  "${t}, ${x}, ${y}, ${yprime}, ${tangentangle}, " +
+                                                  "${normalangle}, ${incidentangle}, ${reflectangle}," +
+                                                  csts.PickTypicalColor(i) + "\n");
        } catch(e: Exception) {
          println("An error occurred when working on the files iterated.alldata.*.csv, then stopped.");
          e.printStackTrace()
@@ -103,4 +100,7 @@ fun main() {
     }
 
 }
+
+
+
 
