@@ -95,7 +95,7 @@ fun main() {
                      + "," + incidentangle.toString() + "," + reflectangle.toString() + ","
                      + csts.PickTypicalColor(i) + "\n");
        } catch(e: Exception) {
-         println("An error occurred when working on the file the BIG FILEs, then stopped.");
+         println("An error occurred when working on the files iterated.alldata.*.csv, then stopped.");
          e.printStackTrace()
          exitProcess(4);
        }
