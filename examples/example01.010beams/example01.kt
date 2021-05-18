@@ -46,10 +46,8 @@ fun main() {
     try {
          val afile = File("setup.scalars.csv");
          afile.writeText("totallines,refractiveindex,bigradius,a,b,z,anglez,c,anglea\n");
-         afile.appendText(totallines.toString() + "," + refractiveindex.toString() + ","
-               + bigradius.toString() + "," + a.toString() + "," + b.toString() + ","
-               + z.toString() + "," + anglez.toString() + "," + c.toString() + ","
-               + anglea.toString() + "\n");
+         afile.appendText("${totallines},${refractiveindex},${bigradius},${a},${b},${z},"+
+                          "${anglez},${c},${anglea}\n");
     } catch(e: Exception) {
          println("An error occurred when working on the file setup.scalars.csv, then stopped.");
          e.printStackTrace()
@@ -84,15 +82,10 @@ fun main() {
               var angleced=anglece-anglede;
               var outangle=Math.asin(Math.sin(angleced*csts.Deg2Rad) * refractiveindex)*csts.Rad2Deg;
 
-              bigfile.appendText(totallines.toString()+ "," + i+ ","
-                  + refractiveindex.toString()+ "," + bigradius.toString() + ","+ a.toString()
-                  + "," + b.toString() + "," + z.toString()+ "," + anglez.toString()+ ","
-                  + c.toString() + "," + anglea.toString() + "," + incidentangle.toString()
-                  + "," + refractiveangle.toString() + "," + anglede.toString() + ","
-                  + dx.toString() + "," + ee.toString() + "," + et.toString() + ","
-                  + ex.toString() + "," + ey.toString() + "," + anglece.toString() + ","
-                  + angleced.toString() + "," + outangle.toString() + ","
-                  + csts.PickTypicalColor(i) + "\n");
+              bigfile.appendText("${totallines},${i},${refractiveindex},${bigradius},${a},${b}," +
+                                 "${z},${anglez},${c},${anglea},${incidentangle},${refractiveangle},"+
+                                 "${anglede},${dx},${ee},${et},${ex},${ey},${anglece},${angleced},"+
+                                 "${outangle}," + csts.PickTypicalColor(i) + "\n");
          }
     } catch(e: Exception) {
          println("An error occurred when working on the files iterated.alldata.*.csv, then stopped.");
