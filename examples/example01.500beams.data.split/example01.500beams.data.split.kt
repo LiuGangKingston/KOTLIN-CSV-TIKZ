@@ -85,15 +85,12 @@ fun main() {
        var outangle=Math.asin(Math.sin(angleced*csts.Deg2Rad) * refractiveindex)*csts.Rad2Deg;
 
        try {
-            (bigfile.GetFileForRow(i)).appendText(totallines.toString()+ "," + i+ ","
-                  + refractiveindex.toString()+ "," + bigradius.toString() + ","+ a.toString()
-                  + "," + b.toString() + "," + z.toString()+ "," + anglez.toString()+ ","
-                  + c.toString() + "," + anglea.toString() + "," + incidentangle.toString()
-                  + "," + refractiveangle.toString() + "," + anglede.toString() + ","
-                  + dx.toString() + "," + ee.toString() + "," + et.toString() + ","
-                  + ex.toString() + "," + ey.toString() + "," + anglece.toString() + ","
-                  + angleced.toString() + "," + outangle.toString() + ","
-                  + csts.PickTikZColor(i) + "\n");
+            (bigfile.GetFileForRow(i)).appendText("${totallines},${i},${refractiveindex}," +
+                                 "${bigradius},${a},${b},${z},${anglez},${c},${anglea},"+
+                                 "${incidentangle},${refractiveangle},${anglede},${dx},"+
+                                 "${ee},${et},${ex},${ey},${anglece},${angleced},"+
+                                 "${outangle}," + csts.PickTikZColor(i) + "\n");
+
        } catch(e: Exception) {
          println("An error occurred when working on the files iterated.alldata.*.csv, then stopped.");
          e.printStackTrace()
@@ -103,5 +100,6 @@ fun main() {
 
 
 }
+
 
 
